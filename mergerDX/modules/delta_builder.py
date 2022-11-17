@@ -155,12 +155,13 @@ def handleDifferences(differences, projectNames, deltaFolder, apiVersion, xmlNam
 
     for status, filename in differences:
 
-        isMetadataFile = True
+        isMetadataFile = False
         for projectName in projectNames:
-            if projectName not in filename:
-                isMetadataFile = False
-                print( f'Warning : {filename} not project {projectName}. Not a metadata file' )
+            if projectName in filename:
+                isMetadataFile = True
+                break
         if not isMetadataFile:
+            print( f'Warning : {filename} is not contained inna proyect folder. It is not a metadata file' )
             continue
 
         if status.startswith('R'):
