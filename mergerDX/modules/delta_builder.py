@@ -94,8 +94,6 @@ def getProjectNames():
     for pathData in data[ 'packageDirectories' ]:
         projectNames.append( pathData[ 'path' ] )
 
-    print('Project names:',projectNames)
-    
     return projectNames
 
 
@@ -161,7 +159,6 @@ def handleDifferences(differences, projectNames, deltaFolder, apiVersion, xmlNam
                 isMetadataFile = True
                 break
         if not isMetadataFile:
-            print( f'Warning : {filename} is not contained inna proyect folder. It is not a metadata file' )
             continue
 
         if status.startswith('R'):
