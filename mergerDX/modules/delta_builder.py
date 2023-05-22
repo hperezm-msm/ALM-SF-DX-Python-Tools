@@ -218,8 +218,11 @@ def handleModification(srcFolder, folder, apiname, filename, deltaFolder, source
 
     if folder in PARSEABLE_METADATA:
         print( f'parse file - {filename}')
+        print( f'  - parsing source - {sourceRef}')
         rootTag, mapComponentsNew = parseFile( f'{filename}', sourceRef )
+        print( f'  - parsing target - {targetRef}')
         rootTag, mapComponentsOld = parseFile( f'{filename}', targetRef )
+        print( f'  - comparing source and target files')
         mapResult = compareFiles( mapComponentsNew, mapComponentsOld, mapDiffs, apiname, xmlName )
         if mapResult.keys():
             generateMergedFile( rootTag, folder, apiname, deltaFolder, mapResult )
