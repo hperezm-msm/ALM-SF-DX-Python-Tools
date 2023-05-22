@@ -174,7 +174,9 @@ def handleDifferences(differences, projectNames, deltaFolder, apiVersion, xmlNam
             hasMetaFile         = getattr( xmlDefinition, "hasMetadata" )
             listChildObjects    = getattr( xmlDefinition, "childObjects" )
             xmlName             = getattr( xmlDefinition, "xmlName" )
-
+            
+            print( f'Warning : ** Ejecutando accion {status} sobre el archivo' )
+            
             if status == 'A':
                 handleCreation( srcFolder, folder, apiname, deltaFolder, hasMetaFile, mapDiffs, xmlName, status )
             elif status == 'M':
