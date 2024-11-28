@@ -17,7 +17,6 @@ MAP_FULLNAME = {
     'externalDataSourceAccesses'    : 'externalDataSource',
     'fieldPermissions'              : 'field',
     'flowAccesses'                  : 'flow',
-    'loginHours'                    : 'mondayStart',
     'loginIpRanges'                 : 'startAddress',
     'objectPermissions'             : 'object',
     'pageAccesses'                  : 'apexPage',
