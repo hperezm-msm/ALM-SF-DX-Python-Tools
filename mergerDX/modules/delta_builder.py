@@ -175,7 +175,9 @@ def handleDifferences(differences, projectNames, deltaFolder, apiVersion, xmlNam
             hasMetaFile         = getattr( xmlDefinition, "hasMetadata" )
             listChildObjects    = getattr( xmlDefinition, "childObjects" )
             xmlName             = getattr( xmlDefinition, "xmlName" )
-
+            
+            print( f'Warning : ** Ejecutando accion {status} sobre el archivo' )
+            
             if status == 'A':
                 handleCreation( srcFolder, folder, apiname, deltaFolder, hasMetaFile, mapDiffs, xmlName, status )
             elif status == 'M':
@@ -217,8 +219,12 @@ def handleModification(srcFolder, folder, apiname, filename, deltaFolder, source
     print(f'Handling modifications')
     if folder in PARSEABLE_METADATA:
         print( f'parse file - {filename} in folder {folder}')
+        print( f'parse file - {filename}')
+        print( f'  - parsing source - {sourceRef}')
         rootTag, mapComponentsNew = parseFile( f'{filename}', sourceRef )
+        print( f'  - parsing target - {targetRef}')
         rootTag, mapComponentsOld = parseFile( f'{filename}', targetRef )
+        print( f'  - comparing source and target files')
         mapResult = compareFiles( mapComponentsNew, mapComponentsOld, mapDiffs, apiname, xmlName )
         if mapResult.keys():
             generateMergedFile( rootTag, folder, apiname, deltaFolder, mapResult )
