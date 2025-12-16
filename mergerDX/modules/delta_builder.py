@@ -219,8 +219,7 @@ def handleModification(srcFolder, folder, apiname, filename, deltaFolder, source
     print(f'Handling modifications')
     if folder in PARSEABLE_METADATA:
         print( f'parse file - {filename} in folder {folder}')
-        print( f'parse file - {filename}')
-        print( f'  - parsing source - {sourceRef}')
+        print( f'  - parsing source - {sourceRef} in {srcFolder}')
         rootTag, mapComponentsNew = parseFile( f'{filename}', sourceRef )
         print( f'  - parsing target - {targetRef}')
         rootTag, mapComponentsOld = parseFile( f'{filename}', targetRef )
