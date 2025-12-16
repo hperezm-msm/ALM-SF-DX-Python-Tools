@@ -226,6 +226,7 @@ def handleModification(srcFolder, folder, apiname, filename, deltaFolder, source
         rootTag, mapComponentsOld = parseFile( f'{filename}', targetRef )
         print( f'  - comparing source and target files')
         mapResult = compareFiles( mapComponentsNew, mapComponentsOld, mapDiffs, apiname, xmlName )
+        print( f'  - compare results - {mapResult.keys()}')
         if mapResult.keys():
             generateMergedFile( rootTag, folder, apiname, deltaFolder, mapResult )
             if folder == 'profiles':
