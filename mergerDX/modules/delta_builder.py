@@ -215,7 +215,7 @@ def handleCreation(srcFolder, folder, apiname, deltaFolder, hasMetaFile, mapDiff
 def handleModification(srcFolder, folder, apiname, filename, deltaFolder, sourceRef, targetRef, hasMetaFile, listChildObjects, mapDiffs, xmlName, status):
 
     if folder in PARSEABLE_METADATA:
-        print( f'parse file - {filename}')
+        print( f'parse file - {filename} in folder {folder}')
         rootTag, mapComponentsNew = parseFile( f'{filename}', sourceRef )
         rootTag, mapComponentsOld = parseFile( f'{filename}', targetRef )
         mapResult = compareFiles( mapComponentsNew, mapComponentsOld, mapDiffs, apiname, xmlName )
