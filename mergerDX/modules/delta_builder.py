@@ -118,7 +118,7 @@ def addChildMetadataToMapDiffs(splittedApiName, mapDiffs, status):
 def addFileToDiffs(mapDiffs, xmlName, status, apiname):
     apiname         = renameApiName( apiname )
     splittedApiName = apiname.split('/')
-    print(f'Adding {apiname} to Diffs')
+    print(f'Adding {apiname} ({xmlName}) to Diffs with status {status}')
     if xmlName == 'AuraDefinitionBundle' or xmlName == 'LightningComponentBundle':
         addValueToMapDiffs( xmlName, status, splittedApiName[ 0 ], mapDiffs )
     elif xmlName == 'CustomObject':
@@ -226,9 +226,11 @@ def handleModification(srcFolder, folder, apiname, filename, deltaFolder, source
         rootTag, mapComponentsOld = parseFile( f'{filename}', targetRef )
         print( f'  - comparing source and target files')
         mapResult = compareFiles( mapComponentsNew, mapComponentsOld, mapDiffs, apiname, xmlName )
-        print( f'  - compare results - {mapResult.keys()}')
+        print( f'  - compare results:')
+        print(mapResult.keys())
         if mapResult.keys():
             generateMergedFile( rootTag, folder, apiname, deltaFolder, mapResult )
+            print(f' - Generated merge file {deltaFolder}/{folder}/{apiname}')
             if folder == 'profiles':
                 addFileToDiffs( mapDiffs, xmlName, status, apiname )
     else:
@@ -293,7 +295,6 @@ def generateMergedFile(rootTag, folder, apiname, deltaFolder, mapResult):
                     mergedFile += iterateElement( elementValue, elementTag, 2 )
                 mergedFile += f'{IDENTATION}</{tagName}>\n'
     mergedFile += f'</{rootTag}>'
-
     makeDirs( f'{deltaFolder}/{folder}' )
     with open( f'{deltaFolder}/{folder}/{apiname}', 'w', encoding='utf-8' ) as resultFile:
         resultFile.write( mergedFile )
