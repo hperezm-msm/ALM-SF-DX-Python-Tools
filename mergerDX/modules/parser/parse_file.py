@@ -7,10 +7,10 @@ from modules.utils.exceptions import DuplicatedTags
 
 def parseFile(filename, reference):
 
-	# fileString	= get_file( filename, reference )
-	with open(filename, 'r',  encoding='utf-8') as file:
-		print(filename)
-		fileString = file.read().rstrip()
+	fileString	= get_file( filename, reference )
+	#with open(filename, 'r',  encoding='utf-8') as file:
+	#	print(filename)
+	#	fileString = file.read().rstrip()
 	xmlData		= elTree.fromstring( fileString )
 	rootTag		= xmlData.tag.split( XMLNS )[ 1 ]
 
