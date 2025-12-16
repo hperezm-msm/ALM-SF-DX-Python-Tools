@@ -227,7 +227,7 @@ def handleModification(srcFolder, folder, apiname, filename, deltaFolder, source
         print( f'  - comparing source and target files')
         mapResult = compareFiles( mapComponentsNew, mapComponentsOld, mapDiffs, apiname, xmlName )
         print( f'  - compare results:')
-        print(mapResult.keys())
+        print(list(mapResult.keys()))
         if mapResult.keys():
             generateMergedFile( rootTag, folder, apiname, deltaFolder, mapResult )
             print(f' - Generated merge file {deltaFolder}/{folder}/{apiname}')
