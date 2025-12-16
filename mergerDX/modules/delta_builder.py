@@ -118,6 +118,7 @@ def addChildMetadataToMapDiffs(splittedApiName, mapDiffs, status):
 def addFileToDiffs(mapDiffs, xmlName, status, apiname):
     apiname         = renameApiName( apiname )
     splittedApiName = apiname.split('/')
+    print(f'Adding {apiname} to Diffs')
     if xmlName == 'AuraDefinitionBundle' or xmlName == 'LightningComponentBundle':
         addValueToMapDiffs( xmlName, status, splittedApiName[ 0 ], mapDiffs )
     elif xmlName == 'CustomObject':
@@ -213,7 +214,7 @@ def handleCreation(srcFolder, folder, apiname, deltaFolder, hasMetaFile, mapDiff
 
 
 def handleModification(srcFolder, folder, apiname, filename, deltaFolder, sourceRef, targetRef, hasMetaFile, listChildObjects, mapDiffs, xmlName, status):
-
+    print(f'Handling modifications')
     if folder in PARSEABLE_METADATA:
         print( f'parse file - {filename} in folder {folder}')
         rootTag, mapComponentsNew = parseFile( f'{filename}', sourceRef )
